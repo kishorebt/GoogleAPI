@@ -1,0 +1,117 @@
+<apex:page sidebar="false" showChat="false" lightningStylesheets="true" showHeader="false">
+    <apex:slds /> 
+    
+    
+    
+    <div class="demo-only" style="height:800px">
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-welcome-mat" aria-labelledby="welcome-mat-25-label" aria-describedby="welcome-mat-25-content" aria-modal="true">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header slds-modal__header_empty">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        </svg>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                </header>
+                <div class="slds-modal__content slds-welcome-mat__content slds-grid" id="welcome-mat-25-content">
+                    <div class="slds-welcome-mat__info slds-size_1-of-2">
+                        <div class="slds-welcome-mat__info-content">
+                            <h2 id="welcome-mat-25-label" class="slds-welcome-mat__info-title"> Google Book API </h2>
+                            <div class="slds-welcome-mat__info-description slds-text-longform">
+                                <p> I have Created a Google Book API as per the assignment given. 
+                               <br/><br/>     Fetching Google Books and Storing the Information  :- I have made the small change as saving the records was a expensive task in terms of storage and API Consumptions So I have created a Save Functionality with a button.
+                                    <br/>And a Nightly Job which cleans up the un-selected data from the book history.</p>
+                            </div>
+                            <div class="slds-welcome-mat__info-progress">
+                                <p>
+                                    <strong> </strong>
+                                </p>
+                            </div>
+                            <div class="slds-progress-bar slds-progress-bar_circular" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" role="progressbar">
+                                <span class="slds-progress-bar__value" style="width:0%">
+                                    <span class="slds-assistive-text">Progress: 0%</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-welcome-mat__tiles slds-size_1-of-2 slds-p-around_medium">
+                      <br/><br/><br/>
+                        <a href="https://ap4.salesforce.com/apex/searchBooks" class="slds-box slds-box_link slds-box_x-small slds-media slds-welcome-mat__tile">
+                            <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small">
+                                <div class="slds-welcome-mat__tile-icon-container">
+                                    <span class="slds-icon_container slds-icon-utility-animal_and_nature">
+                                        <svg class="slds-icon slds-icon-text-default" aria-hidden="true">
+                                        </svg>
+                                    </span>
+                                    <span class="slds-icon_container slds-icon_container_circle slds-icon-action-check" title="Completed">
+                                        <svg class="slds-icon slds-welcome-mat__icon-check" aria-hidden="true">
+                                        </svg>
+                                        <span class="slds-assistive-text">Completed</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="slds-media__body slds-border_left slds-p-around_small">
+                                <h3 class="slds-welcome-mat__tile-title">Search From Google Books</h3>
+                                <p class="slds-welcome-mat__tile-description"> 
+                                    
+                                </p>
+                            </div>
+                        </a>
+                        <a href="https://ap4.salesforce.com/apex/readinglist" class="slds-box slds-box_link slds-box_x-small slds-media slds-welcome-mat__tile">
+                            <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small">
+                                <div class="slds-welcome-mat__tile-icon-container">
+                                    <span class="slds-icon_container slds-icon-utility-call">
+                                        <svg class="slds-icon slds-icon-text-default" aria-hidden="true">
+                                        </svg>
+                                    </span>
+                                    <span class="slds-icon_container slds-icon_container_circle slds-icon-action-check" title="Completed">
+                                        <svg class="slds-icon slds-welcome-mat__icon-check" aria-hidden="true">
+                                        </svg>
+                                        <span class="slds-assistive-text">Completed</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="slds-media__body slds-border_left slds-p-around_small">
+                                <h3 class="slds-welcome-mat__tile-title">Add Books to My Favourite</h3>
+                                <p class="slds-welcome-mat__tile-description">
+                                    
+                                    
+                                </p>
+                            </div>
+                        </a>
+                        
+                        
+                        <a href="" class="slds-box slds-box_link slds-box_x-small slds-media slds-welcome-mat__tile">
+                            <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small">
+                                <div class="slds-welcome-mat__tile-icon-container">
+                                    <span class="slds-icon_container slds-icon-utility-call">
+                                        <svg class="slds-icon slds-icon-text-default" aria-hidden="true">
+                                        </svg>
+                                    </span>
+                                    <span class="slds-icon_container slds-icon_container_circle slds-icon-action-check" title="Completed">
+                                        <svg class="slds-icon slds-welcome-mat__icon-check" aria-hidden="true">
+                                        </svg>
+                                        <span class="slds-assistive-text">Completed</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="slds-media__body slds-border_left slds-p-around_small">
+                                <h3 class="slds-welcome-mat__tile-title">Contact Details</h3>
+                                <p class="slds-welcome-mat__tile-description">
+                                    Email:Kishorebt11@gmail.com <br/>
+                                    Phone: 8105690988  
+                                </p>
+                            </div>
+                        </a>
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+    
+    
+</apex:page>

@@ -1,0 +1,75 @@
+<apex:page controller="SearchBooks" lightningStylesheets="true" sidebar="false" showChat="false" showHeader="false" >
+    <apex:slds /> 
+    <div class="slds-text-align_center" style="font-size: 24px; margin-bottom:2%;"  > Google Book Search</div>
+    <apex:form styleclass="slds-text-align_center" >
+        
+        <apex:pagemessages /> 
+        
+         
+            <div class="slds-form-element" >
+                <label class="slds-form-element__label" for="select-01">Select Category</label>
+                <div class="slds-form-element__control">
+                    <div class="slds-select_container">
+                        
+                        <apex:selectList styleClass="slds-select" id="selecttype" value="{!selecttype}" size="1">
+                            <apex:selectOption itemValue="None" itemLabel="--None--"/>
+                            <apex:selectOption itemValue="Author" itemLabel="Author"/>
+                            <apex:selectOption itemValue="Title" itemLabel="Title"/>
+                            <apex:selectOption itemValue="ISBN" itemLabel="ISBN"/>
+                            <apex:actionSupport event="onchange" action="{!selectpicklist }" rerender="wrap"/>
+                        </apex:selectList> 
+                        
+                    </div>
+                </div>
+            </div>
+        
+        
+        <apex:outputPanel layout="none" id="wrap"  >
+        
+                <div class="slds-form-element" style=" margin-top:2%;margin-bottom:2%;">
+                <label class="slds-form-element__label" for="textarea-id-01">Search Keyword</label>
+                <div class="slds-form-element__control">
+                <apex:inputText value="{!searchtext}"  styleclass="slds-textarea" /> 
+                </div>
+                </div>
+        
+ <apex:outputLink style="margin-right:1%" styleClass="slds-button slds-button_neutral" value="https://c.ap4.visual.force.com/apex/googlehome" id="theLink">Home</apex:outputLink>
+
+ 
+             <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!callsearch}" value="Search" id="Search" /> 
+            <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!Savesearch}" value="Save" id="Save" rendered="{!IF(show == true ,true,false)}" /> 
+        </apex:outputPanel>
+        
+    </apex:form>
+    
+    
+    
+    <apex:outputPanel layout="none" id="wrapper1" rendered="{!IF(show == true,true,false)}">
+        
+        <apex:pageBlock title="  Category {!selectpicklist} :: Search Text  {!searchtext}" >
+            <apex:pageBlockTable value="{!results}" var="res">
+                <!-- <apex:column value="{!res.kind}"/>
+Add rest of the columns you want to display of Result attributes-->
+                <apex:column breakBefore="false"  >
+                    <apex:pageblocksection columns="1">
+                        <!-- iterating the books list-->
+                        <apex:pageBlockTable value="{!res.items}" var="item">
+                            <apex:column headerValue="Title" value="{!item.volumeInfo.title}"/>
+                            <apex:column headerValue="Authors" value="{!item.volumeInfo.authors}"/>
+                            <apex:column headerValue="Description" value="{!item.volumeInfo.description}"/>
+                            <apex:column headerValue="ISBN" value="{!item.volumeInfo.industryIdentifiers[0].identifier}"/>
+                            <apex:column headerValue="Rating Count" value="{!item.volumeInfo.ratingsCount}"/>
+                            
+                            <apex:column headerValue="Cover Image" >
+                                <apex:image id="theImage" value="{!item.volumeInfo.imageLinks.thumbnail}" width="100" height="100" alt="Google Book Search"/>
+                            </apex:column>
+                            <!-- Add rest of the columns you want to display of Items attributes  -->
+                        </apex:pageBlockTable>
+                    </apex:pageblockSection>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+    </apex:outputPanel>  
+    
+</apex:page>

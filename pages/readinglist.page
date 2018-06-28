@@ -1,0 +1,83 @@
+<apex:page controller="readingListcontroller" sidebar="false" showHeader="false" lightningStylesheets="true">
+    <apex:slds /> 
+    
+    <!-- javascript functionality -->
+    <script type="text/javascript">
+    function selectAllCheckboxes(obj,receivedInputID){
+        var inputCheckBox = document.getElementsByTagName("input");
+        for(var i=0; i<inputCheckBox.length; i++){
+            // alert(inputCheckBox[i].id.indexOf(receivedInputID));
+            
+            if(inputCheckBox[i].id.indexOf(receivedInputID)!=-1){
+                inputCheckBox[i].checked = obj.checked;
+            }
+        }
+    }
+     
+    </script>
+    <apex:form >
+        <div class="slds-text-align_center" style="font-size: 24px; " > Add And Remove From Favorite </div>
+
+    <div class="slds-align_absolute-center" style="height: 5rem;">
+     <apex:outputLink style="margin-right:1%" styleClass="slds-button slds-button_neutral" value="https://c.ap4.visual.force.com/apex/googlehome" id="theLink">Home</apex:outputLink>
+</div>
+        <apex:pageBlock title="My Search Book History">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!bookprocess}" value="Add to My Favourite" oncomplete="window.top.location.reload()" reRender="tab01"/>
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockTable value="{!categories1}" var="c">
+                    <apex:column width="25px">
+                        <apex:inputCheckbox value="{!c.bchecked}"/>
+                    </apex:column>
+                    <apex:column value="{!c.bookcat.Name}" headerValue="Name"/>
+                    <apex:column value="{!c.bookcat.Authors__c}" headerValue="Authors"/>
+                    <apex:column value="{!c.bookcat.Description__c}" headerValue="Description"/>
+                    <apex:column value="{!c.bookcat.ISBN__c}" headerValue="ISBN"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        
+        
+            <apex:commandLink styleClass="slds-button slds-button_neutral" action="{!first1}">First </apex:commandlink>
+            <apex:commandLink styleClass="slds-button slds-button_neutral" action="{!previous1}" rendered="{!hasPrevious}">Previous</apex:commandlink>
+            <apex:commandLink styleClass="slds-button slds-button_neutral" action="{!next1}" rendered="{!hasNext}">Next</apex:commandlink>
+            <apex:commandLink styleClass="slds-button slds-button_neutral" action="{!last1}">Last</apex:commandlink>
+        
+                </apex:pageBlock>
+
+        <apex:pageBlock title="My Reading List " id="tab01">
+            
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!process}" value="Remove from My Favourite"  oncomplete="window.top.location.reload()"/>
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockTable value="{!categories}" var="c">
+                    <apex:column width="25px">
+                        <apex:inputCheckbox value="{!c.checked}"/>
+                    </apex:column>
+                    <apex:column value="{!c.cat.Name}" headerValue="Name"/>
+                    <apex:column value="{!c.cat.Bookinformation__r.Description__c}" headerValue="Description"/>
+                    <apex:column value="{!c.cat.Bookinformation__r.ISBN__c}" headerValue="ISBN"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        
+         
+            <apex:commandLink styleClass="slds-button slds-button_neutral" action="{!first}">First</apex:commandlink>
+            <apex:commandLink styleClass="slds-button slds-button_neutral" action="{!previous}" rendered="{!hasPrevious}">Previous</apex:commandlink>
+            <apex:commandLink styleClass="slds-button slds-button_neutral" action="{!next}" rendered="{!hasNext}">Next</apex:commandlink>
+            <apex:commandLink styleClass="slds-button slds-button_neutral" action="{!last}">Last</apex:commandlink>
+         
+                </apex:pageBlock>
+
+        
+        
+        
+        
+        
+    </apex:form>
+    
+    
+    
+</apex:page>
